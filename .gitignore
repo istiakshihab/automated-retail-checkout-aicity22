@@ -1,8 +1,8 @@
-test-preprocessing/dataset/
+classification/dataset/
 __pycache__/
 *.mp4
-test-preprocessing/images/
-test-preprocessing/experiment-images/
+classification/images/
+classification/experiment-images/
 test-preprocessing/notebooks/checkpoint/
 *.pt
 *.pth
