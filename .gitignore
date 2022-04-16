@@ -1,0 +1,12 @@
+test-preprocessing/dataset/
+__pycache__/
+*.mp4
+test-preprocessing/images/
+test-preprocessing/experiment-images/
+test-preprocessing/notebooks/checkpoint/
+*.pt
+*.pth
+*.jpg
+*.txt
+*.png
+*.log
