@@ -1,12 +1,13 @@
-classification/dataset/
+train/classification/dataset/
 __pycache__/
 *.mp4
-classification/images/
-classification/experiment-images/
-test-preprocessing/notebooks/checkpoint/
+train/classification/images/
+train/classification/experiment-images/
+test/test-preprocessing/notebooks/checkpoint/
 *.pt
 *.pth
 *.jpg
 *.txt
 *.png
 *.log
+*.zip
