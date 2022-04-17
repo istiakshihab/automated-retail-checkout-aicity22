@@ -1,3 +1,9 @@
+datasets/
+.ipynb_checkpoints/
+logs/
+checkpoint/
+
+
 train/classification/dataset/
 __pycache__/
 *.mp4
