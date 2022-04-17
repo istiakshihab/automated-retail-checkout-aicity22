@@ -25,7 +25,7 @@ print("Using: ", DEVICE)
 
 
 # Full path to the product segmentation model
-model_path = '/home/hasib/product-segmentation/logs/unet_aicityt4/unet_aicityt4.pth'
+model_path = './models/unet_aicityt4.pth'
 
 
 ########### Product segmentation model ###########
@@ -145,24 +145,6 @@ segmentation_model.load_state_dict(checkpoint)
 # Send to GPU
 segmentation_model = segmentation_model.to(DEVICE) # runs on GPU
 segmentation_model.eval()
-
-def visualize(idx, **images):
-    """Plot images in one row.""" 
-    n = len(images)
-    fig = plt.figure(figsize=(20, 10))
-    for i, (name, image) in enumerate(images.items()):
-        plt.subplot(1, n, i + 1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.title(' '.join(name.split('_')).lower(), fontsize=20)
-        plt.imshow(image, cmap='gray')
-        plt.axis("off")
-        plt.show()
-
-        #plt.tight_layout()
-    #plt.savefig("../outputs/vis/compare-segs/{}.png".format(idx), facecolor="white", bbox_inches = 'tight')
-
-
 
 ########### Hand segmentation model ###########
 

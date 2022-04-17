@@ -1,2 +1,0 @@
-vit_base_patch32_224.pt filter=lfs diff=lfs merge=lfs -text
-unet_aicityt4.pth filter=lfs diff=lfs merge=lfs -text
