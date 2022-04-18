@@ -59,5 +59,6 @@ python3 clsf_training.py \
 --model_dir ../test/models/
 ```
 
+To only run training on already preprocessed and formatted dataset, use the `training_only.sh` and set the arguments accordingly. 
 
 
