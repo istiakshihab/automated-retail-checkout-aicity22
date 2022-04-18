@@ -15,8 +15,6 @@ import matplotlib.pyplot as plt
 if torch.cuda.is_available():
     torch.backends.cudnn.deterministic = True
 
-# Device
-DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model = timm.create_model("vit_base_patch32_224", num_classes=116)
 trained_model = torch.load(
     "./models/vit_base_patch32_224.pt", map_location=torch.device("cpu"))
@@ -50,7 +48,11 @@ object_id = []
 timestamp = []
 
 video_location = "./test-videos/"
-videos = os.listdir(video_location)
+files = os.listdir(video_location)
+videos = []
+for file in files:
+    if(file.endswith(".mp4")):
+        videos.append(file)
 videos.sort()
 video_index = 1
 print(videos)

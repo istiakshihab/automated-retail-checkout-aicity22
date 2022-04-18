@@ -20,7 +20,7 @@ if torch.cuda.is_available():
     torch.backends.cudnn.deterministic = True
 
 # Device
-DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+DEVICE = torch.device("cpu")
 print("Using: ", DEVICE)
 
 
