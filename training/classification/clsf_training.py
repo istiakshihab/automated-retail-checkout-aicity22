@@ -63,7 +63,7 @@ class SaveBestModelCallback(TrainerCallback):
         self.greater_is_better = greater_is_better
         self.operator = np.greater if self.greater_is_better else np.less
         self.best_metric = None
-        self.save_path = log.model_name+".pt"
+        self.save_path = log.model_path + log.model_name+".pt"
         self.reset_on_train = reset_on_train
         self.log = log
 
@@ -206,7 +206,7 @@ class TimmMixupTrainer(Trainer):
         self.ema_accuracy.reset()
 
 
-def main(data_path):
+def main(data_path, log_dir, model_dir):
     log = ExperimentLog()
     # Set training arguments, hardcoded here for clarity
     image_size = (224, 224)
@@ -219,6 +219,8 @@ def main(data_path):
     num_epochs = 50
     early_stop = 5
 
+    log.path = str(log_dir)
+    log.model_path = model_dir
     log.image_size = str(image_size)
     log.learning_rate = str(lr)
     log.smoothing = str(smoothing)
@@ -241,7 +243,7 @@ def main(data_path):
         num_classes=num_classes,
     )
 
-    model_name = "efficientnet_b0"
+    model_name = "vit_base_patch32_224"
     drop_path_rate = 0.05
     log.model_name = model_name
     log.drop_path_rate = str(drop_path_rate)
@@ -319,5 +321,7 @@ def main(data_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Simple example of training script using timm.")
     parser.add_argument("--data_dir", required=True, help="The data folder on disk.")
+    parser.add_argument("--log_dir", required=True, help="Directory for saving log files.")
+    parser.add_argument("--model_dir", required=True, help="Directory for saving models.")
     args = parser.parse_args()
-    main(args.data_dir)
+    main(args.data_dir, args.log_dir, args.model_dir)
