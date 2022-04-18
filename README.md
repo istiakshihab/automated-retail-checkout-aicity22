@@ -1,1 +1,1 @@
-# istiakshihab-automated-retail-checkout-aicity22
+# automated-retail-checkout-aicity22
