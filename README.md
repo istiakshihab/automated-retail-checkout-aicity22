@@ -12,19 +12,16 @@ This code requires Python 3.8.12 and PyTorch 1.8.2. Run `pip install -r requirem
 See [`training/segmentation`](training/segmentation/README.md) for details.
 
 
-## 2b Classification training code
+## 2b. Classification training code
 See [`training/classification`](training/classification/README.md) for details.
 
 
 ## 3. Inference code
 
-After steps 2a and 2b, make sure both segmentation and classification models are present in the [`test/models`](test/models/) directory. 
+After steps 2a and 2b, make sure both segmentation and classification models are present in the [`test/models`](test/models/) directory. Then see [`README.md`](test/README.md) for details.
 
 
-## 3. Pre-trained models
-Pretrained weights can be used by using the [`download-model.sh`](test/download-model.sh) script.
-
-## 5. Citation
+## 4. Citation
 will be added here.
 
 ### Acknowledgements
