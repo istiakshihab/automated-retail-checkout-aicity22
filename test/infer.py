@@ -12,14 +12,15 @@ import timm
 import os
 import matplotlib.pyplot as plt
 
-if torch.cuda.is_available():
-    torch.backends.cudnn.deterministic = True
+# if torch.cuda.is_available():
+#     torch.backends.cudnn.deterministic = True
 
 # Device
-DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+# DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+DEVICE = torch.device("cpu")
 model = timm.create_model("vit_base_patch32_224", num_classes=116)
 trained_model = torch.load(
-    "./models/vit_base_patch32_224.pt", map_location=torch.device("cpu"))
+    "models/vit_base_patch32_224.pt", map_location=torch.device("cpu"))
 model.load_state_dict(trained_model["model_state_dict"])
 
 transforms_image = transforms.Compose([transforms.Resize((224, 224)),

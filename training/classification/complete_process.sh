@@ -10,6 +10,6 @@ python3 databuilder.py \
 
 
 python3 clsf_training.py \
---data_dir <PATH TRAIN AND VALIDATION FOLDERS> \
+--data_dir <PATH TO TRAIN AND VALIDATION FOLDERS> \
 --log_dir <PATH TO LOGGING DIRECTORY> \
 --model_dir <PATH TO SAVED MODELS>

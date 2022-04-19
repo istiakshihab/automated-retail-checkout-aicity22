@@ -33,7 +33,7 @@ The training folder is structured as followed:
 `complete_process.sh` : combines background replacement, folder structuring and training code in the same pipeline. 
 
 ## Training Procedure 
-To run the whole training from scratch, use the `complete_process.sh` script. The script has three stages. 
+To run the whole training from scratch, use the [`complete_process.sh`](complete_process.sh) script. The script has three stages. 
 1. Preprocessing raw image data from AiCity-Track 4 to replace their background with a programmatically simulated tray background
 
 2. Relocate the background-replace images into folders according to their labels. 

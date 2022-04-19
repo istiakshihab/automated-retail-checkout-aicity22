@@ -5,7 +5,8 @@ unzip vit_base_patch32_224.zip
 unzip unet_aicityt4.zip
 
 mv vit_base_patch32_224.pt models/
-mv unet_aicityt4.pt models/
+mv unet_aicityt4/unet_aicityt4.pth models/
 
 rm vit_base_patch32_224.zip
 rm unet_aicityt4.zip
+rm -rf unet_aicityt4

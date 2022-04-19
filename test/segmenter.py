@@ -143,7 +143,7 @@ segmentation_model = build_unet()
 checkpoint = torch.load(model_path, map_location="cpu")
 segmentation_model.load_state_dict(checkpoint)
 # Send to GPU
-segmentation_model = segmentation_model.to(DEVICE) # runs on GPU
+segmentation_model = segmentation_model.to("cpu") # runs on GPU #TODO
 segmentation_model.eval()
 
 ########### Hand segmentation model ###########
@@ -202,7 +202,7 @@ def crop_with_hand_entropy_seg(img):
     image_no_hands = Image.fromarray(np.uint8(image_no_hands)).convert('RGB')
     image_tensor = transforms_image(image_no_hands)
 
-    image_tensor_b = torch.unsqueeze(image_tensor, 0).to(DEVICE)
+    image_tensor_b = torch.unsqueeze(image_tensor, 0).to("cpu") ##TODO
     output = torch.sigmoid(segmentation_model(image_tensor_b.float()))
     pred = output.permute(0, 2, 3, 1).squeeze().detach().cpu().numpy() > 0.5
     

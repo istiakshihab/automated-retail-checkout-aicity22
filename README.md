@@ -18,3 +18,6 @@ Go to the [`training/classification`](training/classification/) folder and follo
 * test videos must be placed inside the [`test/test-videos`](test/test-videos/) folder. No files other than the videos should be in this directory.
 
 * Follow the instructions in [`README.md`](test/README.md) to generate the submission file. 
+
+
+
