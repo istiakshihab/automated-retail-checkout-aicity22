@@ -59,6 +59,7 @@ def make_circular_gradient(innerColor, outerColor, imgsize=(250, 250)):
 
 
 def replace_image_background (source_path, target_path, segmentation_path):
+    print("Removing backgrounds from images...")
 
     orignal_synth_images = images = glob.glob(source_path + "/*")
 
@@ -70,7 +71,7 @@ def replace_image_background (source_path, target_path, segmentation_path):
     circular_gray_white = make_circular_gradient([255, 255,255], [128, 128, 128])
 
     for image_path in tqdm(images, total=len(images)):
-        label_path = segmentation_path + image_path.split("/")[-1].split(".jpg")[0] + '_seg.jpg'
+        label_path = segmentation_path+"/" + image_path.split("/")[-1].split(".jpg")[0] + '_seg.jpg'
         image = cv2.imread(image_path)
         mask = cv2.imread(label_path)
         if image is None or mask is None:
@@ -89,7 +90,7 @@ def replace_image_background (source_path, target_path, segmentation_path):
 
         image[mask] = tray_background[mask]
         cv2.imwrite(f"{target_path}/{image_path.split('/')[-1]}", image)
-
+    print("Finished producing background removed images.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Remove background from training images")

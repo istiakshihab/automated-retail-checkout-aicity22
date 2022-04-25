@@ -43,20 +43,18 @@ To run the whole training from scratch, use the [`complete_process.sh`](complete
 Here's an example script we have used :
 ```python
 python3 synth_image_creator.py \
---source_dir ../dataset/raw_images \
---target_dir ../dataset/bgr_images \
---segmentation_dir ../dataset/segmentation_labels
+--source_dir dataset/Auto-retail-syndata-release/syn_image_train \
+--target_dir dataset/Auto-retail-syndata-release/bgr_images \
+--segmentation_dir dataset/Auto-retail-syndata-release/segmentation_labels
 
 
-python3 databuilder.py \ 
---data_dir ../dataset/bgr_images \ 
---train_file_ratio 0.8 \
+python3 databuilder.py --data_dir dataset/Auto-retail-syndata-release/bgr_images 
 
 
 python3 clsf_training.py \
---data_dir ../dataset \
---log_dir training_logs/ \
---model_dir ../test/models/
+--data_dir dataset/Auto-retail-syndata-release/ \
+--log_dir training_logs \
+--model_dir models
 ```
 
 To only run training on already preprocessed and formatted dataset, use the `training_only.sh` and set the arguments accordingly. 

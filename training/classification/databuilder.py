@@ -10,11 +10,11 @@ def seperate_into_folder(source_path) :
 
     for file in filenames:
         class_label = file.split("_")[0] 
-        path_to_save = source_path.split("/")[0]+"/train/"+class_label ## dataset/train/001
+        path_to_save = "/".join(source_path.split("/")[:-1])+"/train/"+class_label ## dataset/train/001
         if not os.path.exists(path_to_save):
             os.makedirs(path_to_save)
         shutil.copy(datapath+"/"+file, path_to_save)
-
+    print("Seperated into label-wise folders.")
 
 
 def get_files_from_folder(path):
@@ -24,7 +24,7 @@ def get_files_from_folder(path):
 
 def split_traindata(source_path, train_ratio):
     # get dirs
-    datapath = source_path.split("/")[0]
+    datapath = "/".join(source_path.split("/")[:-1])
     _, dirs, _ = next(os.walk(datapath+"/train"))
 
     # calculates how many train data per class
@@ -49,12 +49,12 @@ def split_traindata(source_path, train_ratio):
             dst = os.path.join(path_to_save, files[j])
             src = os.path.join(path_to_original, files[j])
             shutil.move(src, dst)
+    print("Seperated into train folders.")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train test split.")
     parser.add_argument("--data_dir", required=True, help="The background removed image data folder on disk.")
-    parser.add_argument("--train_file_ratio", required=True, help="Ratio of training file")
     args = parser.parse_args()
     seperate_into_folder(args.data_dir)
-    split_traindata(args.data_dir, args.train_file_ratio)
+    split_traindata(args.data_dir, .80)
