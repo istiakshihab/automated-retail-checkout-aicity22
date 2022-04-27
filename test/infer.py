@@ -1,3 +1,15 @@
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("folder", help="Name the folder that test files are stored in, in the test directory.")
+try:
+    args = parser.parse_args()
+    video_location = args.folder
+    video_location += "/"
+except:
+    print("Name the folder that test files are stored in, in the test directory, as:\npython infer.py 'video_location'")
+    quit()
+
 import torchvision.transforms as transforms
 import torch
 import torch.hub
@@ -12,8 +24,8 @@ import timm
 import os
 import matplotlib.pyplot as plt
 
-# if torch.cuda.is_available():
-#     torch.backends.cudnn.deterministic = True
+if torch.cuda.is_available():
+    torch.backends.cudnn.deterministic = True
 
 model = timm.create_model("vit_base_patch32_224", num_classes=116)
 trained_model = torch.load(
@@ -47,17 +59,15 @@ video_id = []
 object_id = []
 timestamp = []
 
-video_location = "./test-videos/"
-files = os.listdir(video_location)
 videos = []
-for file in files:
-    if(file.endswith(".mp4")):
-        videos.append(file)
-videos.sort()
-video_index = 1
-print(videos)
 
-for video in videos:
+with open(video_location+"video_id.txt") as f:
+    for line in f.readlines():
+        idx, filename = line.split(' ')
+        videos.append((idx, filename.strip()))
+    
+
+for index, video in videos:
     images = []
     ratios = []
     colors = []
@@ -115,13 +125,13 @@ for video in videos:
 
     for image, frame in tqdm(frames_with_object):
         output = infer_frame(image, model)
-        video_id.append(video_index)
+        video_id.append(index)
         object_id.append(output)
         timestamp.append(int(frame/60))
-    video_index += 1
 
 
-print("Creating Submission File")
+
+print("Creating Submission File: submission.txt")
 
 with open('submission.txt', 'w') as f:
     prev_vid = -1
