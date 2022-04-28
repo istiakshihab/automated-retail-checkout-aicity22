@@ -7,7 +7,7 @@ Code for our CVPR 2022 Workshop paper *VISTA: Vision Transformer enhanced by U-N
 <p align="center">
   <a href="#"><img src="./media/vista.png"/></a> <br />
   <em> 
-    Figure 1. Illustration of the data generation process based on unpaired image-to-image translation. Chest X-ray images are translated from Non-COVID-19 (i.e. Normal or Pneumonia) to COVID-19 and then back to Non-COVID-19 via cycle-consistency
+    Figure 1. Illustration of the overall segmentation and classification pipeline
     </em>
 </p>
 
