@@ -33,4 +33,4 @@ will be added here.
 
 ### Acknowledgements
 
-We thank [AICITY 22](https://www.aicitychallenge.org/) organizer for making data available for use.
+We thank [AICITY 22](https://www.aicitychallenge.org/) organizers for making data available for use. We also thank [Giga Tech Ltd.](https://gigatechltd.com/) for providing funding for this work.
